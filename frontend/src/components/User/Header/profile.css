@@ -1,0 +1,362 @@
+/* --- Global Layout --- */
+.profile-page-wrapper {
+    background-color: #f3f4f6; /* Nền xám nhạt sạch sẽ */
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+}
+
+/* --- Banner Nền --- */
+.profile-banner-bg {
+    height: 250px;
+    background: linear-gradient(to right, #0f172a, #1e293b); /* Xanh Navy đậm */
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Dashboard Container --- */
+.dashboard-container {
+    max-width: 1200px;
+    margin: -100px auto 50px; /* Kéo nội dung đè lên banner */
+    padding: 0 20px;
+    display: flex;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- SIDEBAR (User Info) --- */
+.user-sidebar {
+    flex: 1; /* Chiếm 1 phần */
+    max-width: 350px;
+}
+
+.user-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.avatar-circle {
+    width: 100px;
+    height: 100px;
+    background: #d4af37; /* Vàng Gold */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 0 auto 20px;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.user-name {
+    margin: 0;
+    color: #0f172a;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.user-email {
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.user-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-item span {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.stat-item strong {
+    font-size: 1.1rem;
+    color: #d4af37;
+}
+
+.divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 20px 0;
+}
+
+.contact-info .info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #475569;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* --- MAIN CONTENT (Booking List) --- */
+.booking-content {
+    flex: 2; /* Chiếm 2 phần */
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #f6f46c;
+    /* Nếu muốn tiêu đề nổi bật trên nền banner thì thêm màu trắng */
+    /* color: #fff; */ 
+}
+
+.section-title h2 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.section-title svg {
+    font-size: 1.5rem;
+    color: #d4af37;
+}
+
+/* --- TICKET STYLE (Phong cách vé máy bay) --- */
+.ticket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.booking-ticket {
+    position: relative; /* Quan trọng */
+    display: flex;
+    background: #fff;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    overflow: hidden;
+}
+
+.booking-ticket:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Ticket Left */
+.ticket-left {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.ticket-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.ticket-code {
+    color: #0f172a;
+    font-weight: 800;
+    font-family: monospace;
+    font-size: 1.1rem;
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.booking-ticket .room-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #d4af37;
+    margin: 0 0 15px 0;
+}
+
+.ticket-dates {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.date-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.date-group strong {
+    font-size: 1rem;
+    color: #334155;
+}
+
+.arrow {
+    color: #cbd5e1;
+}
+
+.ticket-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.guest-info {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge.success {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.status-badge.cancel {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+
+.status-badge.pending {
+    background-color: #ffedd5;
+    color: #9a3412;
+}
+
+/* --- Ticket Divider (Đường cắt) --- */
+.ticket-divider {
+    width: 20px;
+    position: relative;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashed-line {
+    border-left: 2px dashed #e2e8f0;
+    height: 80%;
+}
+
+.notch-top, .notch-bottom {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #f3f4f6; /* Trùng màu nền trang web */
+    border-radius: 50%;
+    left: 0;
+}
+
+.notch-top { top: -10px; }
+.notch-bottom { bottom: -10px; }
+
+/* Ticket Right */
+.ticket-right {
+    width: 150px;
+    padding: 20px;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-left: 1px solid #f1f5f9;
+}
+.ticket-right .price-tag {
+    position: static; /* Hoặc relative */
+    margin-top: 10px;
+}
+.qr-fake {
+    font-size: 3rem;
+    color: #0f172a;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.price-tag label {
+    display: block;
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+}
+
+.price-tag strong {
+    color: #d4af37;
+    font-size: 1.1rem;
+}
+
+/* Empty State */
+.profile-container-empty, .no-bookings-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+}
+.empty-icon {
+    font-size: 3rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+.btn-book-now {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #0f172a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    
+    .user-sidebar {
+        max-width: 100%;
+    }
+    
+    .booking-ticket {
+        flex-direction: column;
+    }
+    
+    .ticket-divider, .ticket-right {
+        display: none; /* Ẩn phần QR trên mobile cho gọn */
+    }
+
+    .ticket-left {
+        border-bottom: 4px solid #d4af37; /* Thay QR bằng viền vàng */
+    }
+}

@@ -1,0 +1,221 @@
+/* --- Layout Chung --- */
+#contact-split-section {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff;
+    min-height: 100vh; /* Chiếm chiều cao màn hình */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    background: #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1); /* Bóng đổ lớn bao quanh */
+    margin: 40px;
+    border-radius: 20px;
+    overflow: hidden; /* Để bo góc ảnh hưởng cả con bên trong */
+}
+
+/* --- CỘT TRÁI (INFO PANEL) --- */
+.info-panel {
+    flex: 1; /* Chiếm 1 phần */
+    background-color: #0f172a; /* Màu xanh Navy đậm */
+    color: #fff;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+/* Trang trí họa tiết chìm (optional) */
+.info-panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 20%);
+    pointer-events: none;
+}
+
+.sub-title {
+    color: #d4af37; /* Màu vàng Gold */
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.info-panel h2 {
+    font-size: 3rem;
+    margin: 0 0 20px 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.intro-text {
+    color: #cbd5e1; /* Màu xám xanh nhạt */
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Danh sách liên hệ */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255,255,255,0.1); /* Trong suốt */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #d4af37;
+    font-size: 1.2rem;
+}
+
+.detail-item h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.detail-item p {
+    margin: 5px 0 0 0;
+    font-weight: 500;
+}
+
+/* Map nhỏ */
+.mini-map-container {
+    width: 100%;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.mini-map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    
+}
+
+/* --- CỘT PHẢI (FORM PANEL) --- */
+.form-panel {
+    flex: 1.2; /* Chiếm 1.2 phần (rộng hơn cột trái xíu) */
+    padding: 60px;
+    background-color: #fff;
+}
+
+.luxury-form h3 {
+    font-size: 2rem;
+    color: #0f172a;
+    margin-bottom: 40px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Input Style (Floating Label) */
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group input, 
+.input-group textarea {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #ddd; /* Chỉ có gạch chân */
+    outline: none;
+    background: transparent;
+    transition: border-color 0.3s;
+}
+
+.input-group textarea {
+    resize: vertical;
+}
+
+/* Label mặc định nằm đè lên input */
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    font-size: 1rem;
+    color: #999;
+    pointer-events: none; /* Bấm xuyên qua label */
+    transition: 0.3s ease all;
+}
+
+/* Hiệu ứng khi Focus hoặc khi có dữ liệu (placeholder trick) */
+.input-group input:focus,
+.input-group textarea:focus {
+    border-bottom-color: #d4af37;
+}
+
+/* Khi input được focus HOẶC khi input không trống (placeholder shown trick) */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+    top: -20px; /* Bay lên trên */
+    font-size: 0.8rem;
+    color: #d4af37;
+    font-weight: bold;
+}
+
+/* Nút gửi */
+.btn-send {
+    background-color: #0f172a;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.btn-send:hover {
+    background-color: #d4af37; /* Hover đổi màu vàng */
+    color: #0f172a;
+    transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contact-wrapper {
+        flex-direction: column;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .info-panel, .form-panel {
+        padding: 40px 20px;
+    }
+
+    .mini-map-container {
+        height: 250px; /* Map to hơn trên mobile */
+    }
+}

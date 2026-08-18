@@ -1,0 +1,105 @@
+/* --- Wrapper bao ngoài (Full màn hình) --- */
+.carousel-frame-wrapper {
+    width: 100%; /* Chiếm toàn bộ chiều ngang */
+    max-width: 100%; /* Xóa giới hạn 1000px cũ */
+    padding: 0; /* Xóa đệm để ảnh tràn viền */
+    margin: 0; /* Xóa margin */
+    background-color: #000; /* Nền đen để làm nổi bật ảnh */
+    border-bottom: 10px solid #f9a172; /* Giữ lại một viền vàng dưới đáy làm điểm nhấn khung */
+    border-top: 10px solid #f9bb99; /* Viền vàng trên đầu */
+}
+
+/* --- Container chính --- */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    /* Sử dụng đơn vị vh (viewport height) để chiều cao tự chỉnh theo màn hình */
+    height: 85vh; /* Chiều cao bằng 85% màn hình người dùng -> Rất to và đẹp */
+    overflow: hidden;
+}
+
+/* --- Track và Slide --- */
+.carousel-track {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); /* Hiệu ứng trượt mượt hơn */
+    height: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* QUAN TRỌNG: Cắt ảnh để lấp đầy khung mà không bị méo */
+    object-position: center; /* Luôn lấy trung tâm bức ảnh */
+    filter: brightness(0.9); /* Làm tối nhẹ ảnh để text/nút bấm nổi hơn (tùy chọn) */
+}
+
+/* --- MŨI TÊN (Điều chỉnh to hơn cho hợp màn hình lớn) --- */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent; /* Làm trong suốt nền nút */
+    color: white; /* Icon màu trắng */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Viền tròn mỏng */
+    width: 60px; /* To hơn */
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: white;
+    color: #333;
+    border-color: white;
+    transform: translateY(-50%) scale(1.1); /* Phóng to nhẹ khi hover */
+}
+
+.carousel-arrow svg {
+    width: 30px;
+    height: 30px;
+}
+
+.left-arrow {
+    left: 40px; /* Cách lề xa hơn chút */
+}
+
+.right-arrow {
+    right: 40px;
+}
+
+/* --- Dots (Chấm tròn điều hướng) --- */
+.carousel-dots {
+    position: absolute;
+    bottom: 30px; /* Cao hơn chút */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white; /* Viền trắng */
+    background-color: transparent; /* Nền trong suốt */
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background-color: #d4af37; /* Active màu vàng Gold */
+    border-color: #d4af37;
+    transform: scale(1.3);
+}

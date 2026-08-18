@@ -1,0 +1,93 @@
+/* Sidebar container chính */
+.sidebar {
+  width: 260px; /* Độ rộng cố định */
+  height: 100vh; /* Chiều cao full màn hình */
+  background-color: #1e293b; /* Màu nền tối (Dark Slate) */
+  color: #fff;
+  display: flex;
+  flex-direction: column; /* Xếp dọc: Logo -> Menu -> Footer */
+  position: fixed; /* Cố định bên trái */
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+
+}
+
+/* Phần Logo */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #334155;
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  color: #38bdf8; /* Màu xanh nổi bật cho logo */
+}
+
+.logo-text {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Phần Menu List */
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Khoảng cách giữa các nút */
+  flex-grow: 1; /* Đẩy phần footer xuống dưới cùng */
+}
+
+/* Style chung cho từng item */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: #cbd5e1; /* Màu chữ xám nhạt */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.menu-item .icon {
+  font-size: 1.2rem;
+  display: flex; /* Căn giữa icon */
+}
+
+/* Hiệu ứng Hover */
+.menu-item:hover {
+  background-color: #334155;
+  color: #fff;
+  transform: translateX(5px); /* Hiệu ứng trượt nhẹ sang phải */
+}
+
+/* Trạng thái Active (đang chọn) */
+.menu-item.active {
+  background-color: #0ea5e9; /* Màu xanh dương sáng */
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(14, 165, 233, 0.3);
+}
+
+/* Phần Footer (Logout) */
+.sidebar-footer {
+  border-top: 1px solid #334155;
+  padding-top: 20px;
+}
+
+.menu-item.logout {
+  color: #f87171; /* Màu đỏ nhạt cho nút thoát */
+}
+
+.menu-item.logout:hover {
+  background-color: #450a0a; /* Nền đỏ đậm khi hover */
+  color: #fca5a5;
+}

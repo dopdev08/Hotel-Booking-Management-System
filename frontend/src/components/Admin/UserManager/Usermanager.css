@@ -1,0 +1,148 @@
+/* ===== LAYOUT ===== */
+
+.sidebar { 
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 260px;
+  height: 100vh;
+  background: #1e293b;
+  z-index: 100;
+ }
+.content { 
+  margin-left: 260px; /* CHÌA KHÓA */
+  padding: 28px;
+  height: 100vh;
+  overflow-y: auto;
+ }
+
+/* ===== HEADER ===== */
+.page-header {
+  display: flex; justify-content: space-between; margin-bottom: 22px;
+}
+.page-header h1 { font-size: 1.6rem; }
+.page-header p { color: #64748b; }
+
+/* ===== TOOLBAR ===== */
+.toolbar { display: flex; gap: 12px; align-items: center; }
+.search { position: relative; }
+.search svg {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+}
+.search input {
+  padding: 9px 12px 9px 34px;
+  border-radius: 8px; border: 1px solid #cbd5e1;
+}
+.count {
+  background: #0f172a; color: white;
+  padding: 6px 12px; border-radius: 8px;
+  font-weight: 600;
+}
+
+/* ===== CARD / TABLE ===== */
+.card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+th {
+  background: #f8fafc;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #475569;
+}
+tr:hover { background: #f1f5f9; }
+.center { text-align: center; }
+
+/* ===== USER ===== */
+.user { display: flex; align-items: center; gap: 10px; }
+.avatar {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,#f59e0b,#d97706);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.name { font-weight: 600; font-size: .9rem; }
+.uid { font-size: .75rem; color: #94a3b8; }
+
+/* ===== CONTACT ===== */
+.contact span {
+  display: flex; align-items: center;
+  gap: 6px; font-size: .85rem;
+}
+
+/* ===== ROLE ===== */
+.role {
+  display: inline-flex; gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 700;
+}
+.role.user { background: #e0f2fe; color: #0369a1; }
+.role.admin { background: #f3e8ff; color: #6b21a8; }
+
+/* ===== STATUS ===== */
+.status { color: #16a34a; font-weight: 600; font-size: .8rem; }
+
+/* ===== ACTION ===== */
+.icon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  border: none; cursor: pointer;
+  background: #f1f5f9;
+}
+.icon.edit:hover { background: #3b82f6; color: white; }
+.icon.delete:hover { background: #ef4444; color: white; }
+
+/* ===== MODAL ===== */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex; justify-content: center; align-items: center;
+}
+.modal {
+  width: 420px;
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+}
+.modal header {
+  display: flex; justify-content: space-between;
+}
+.modal-user {
+  display: flex; gap: 14px; margin: 15px 0;
+}
+.avatar-lg {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 1.3rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 9px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+.actions {
+  display: flex; justify-content: flex-end; gap: 10px;
+}
+.actions .primary {
+  background: #3b82f6; color: white;
+  border: none; padding: 8px 18px;
+  border-radius: 8px;
+}
+.empty { text-align: center; padding: 30px; color: #94a3b8; }

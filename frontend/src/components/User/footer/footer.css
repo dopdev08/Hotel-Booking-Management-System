@@ -1,0 +1,194 @@
+/* --- Thiết lập chung cho Footer --- */
+.luxury-footer {
+    background-color: #0b0f19; /* Nền tối sang trọng */
+    color: #b7c2d1; /* Màu chữ xám xanh nhạt, dễ đọc trên nền đen */
+    font-family: 'Segoe UI', sans-serif;
+    padding-top: 80px;
+    border-top: 3px solid #d4af37; /* Viền vàng trên cùng làm điểm nhấn */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: grid;
+    /* Chia 4 cột: Cột đầu to gấp đôi các cột sau */
+    grid-template-columns: 2fr 1fr 1fr 1.5fr; 
+    gap: 40px;
+}
+
+/* --- Typography --- */
+.luxury-footer h3 {
+    color: #fff;
+    font-family: 'Playfair Display', serif; /* Font có chân */
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- Cột 1: Brand --- */
+.footer-logo {
+    color: #fff;
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.footer-logo span {
+    color: #d4af37; /* Chữ Hotel màu vàng */
+}
+
+.brand-desc {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icons a:hover {
+    background-color: #d4af37;
+    color: #0b0f19;
+    transform: translateY(-3px);
+}
+
+/* --- Cột 2: Links --- */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #b7c2d1;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+    padding-left: 5px; /* Hiệu ứng đẩy chữ sang phải */
+}
+
+/* --- Cột 3: Contact --- */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.icon-wrapper {
+    color: #d4af37;
+    font-size: 1.1rem;
+    margin-top: 2px;
+}
+
+/* --- Cột 4: Newsletter --- */
+.newsletter-form .input-wrap {
+    position: relative;
+    margin-top: 15px;
+}
+
+.newsletter-form input {
+    width: 100%;
+    padding: 12px 50px 12px 15px; /* Chừa chỗ cho nút bấm */
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.newsletter-form input:focus {
+    border-color: #d4af37;
+}
+
+.newsletter-form button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #d4af37;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-50%) scale(1.1);
+    color: #fff;
+}
+
+/* --- Footer Bottom --- */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 25px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Đẩy 2 bên ra xa */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+}
+
+.footer-bottom-links a {
+    color: #b7c2d1;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.footer-bottom-links a:hover {
+    color: #d4af37;
+}
+
+/* --- Responsive Mobile --- */
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: 1fr 1fr; /* Tablet: 2 cột */
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-content {
+        grid-template-columns: 1fr; /* Mobile: 1 cột */
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

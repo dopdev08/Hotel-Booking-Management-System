@@ -1,0 +1,145 @@
+/* ================= LAYOUT FLEXBOX (FIXED SIDEBAR) ================= */
+.admin-container {
+  display: flex;        /* Xếp ngang Sidebar và Content */
+  width: 100%;
+  height: 100vh;        /* Full màn hình */
+  overflow: hidden;     /* Ẩn thanh cuộn của trình duyệt */
+  background-color: #f8fafc;
+}
+
+.admin-sidebar {
+  width: 260px;         /* Chiều rộng cố định cho Sidebar */
+  flex-shrink: 0;       /* Không cho phép sidebar co lại */
+  background-color: #1e293b; 
+  height: 100%;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.admin-content {
+  flex: 1;              /* Chiếm toàn bộ phần còn lại */
+  height: 100%;
+  overflow-y: auto;     /* THANH TRƯỢT RIÊNG CHO NỘI DUNG */
+  padding: 30px;
+  position: relative;
+}
+
+/* ================= NỘI DUNG TRANG BOOKING ================= */
+.booking-wrapper {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Header */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.page-title {
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin: 0;
+  font-weight: 700;
+}
+
+.page-subtitle { color: #64748b; margin-top: 5px; }
+
+.btn-refresh {
+  display: flex; align-items: center; gap: 8px;
+  background: white; border: 1px solid #e2e8f0;
+  padding: 8px 16px; border-radius: 8px;
+  font-weight: 600; color: #475569;
+  cursor: pointer; transition: 0.2s;
+}
+.btn-refresh:hover { border-color: #3b82f6; color: #3b82f6; }
+.spin { animation: spin 1s infinite linear; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* Toolbar */
+.toolbar-section {
+  display: flex; justify-content: space-between; align-items: center;
+  background: white; padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  margin-bottom: 20px;
+}
+
+.search-box {
+  position: relative; width: 350px;
+}
+.search-box input {
+  width: 100%; padding: 10px 10px 10px 40px;
+  border: 1px solid #e2e8f0; border-radius: 8px;
+  outline: none; transition: 0.2s;
+}
+.search-box input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+.search-box .icon {
+  position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8;
+}
+
+.summary-badge { background: #e0f2fe; color: #0369a1; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem; }
+
+/* Table Styling */
+.table-container {
+  background: white; border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  overflow: hidden; /* Bo góc cho bảng */
+}
+
+.booking-table { width: 100%; border-collapse: collapse; }
+
+.booking-table th {
+  background: #f1f5f9; color: #475569;
+  padding: 16px; text-align: left;
+  font-size: 0.85rem; text-transform: uppercase; font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.booking-table td {
+  padding: 16px; border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle; color: #334155; font-size: 0.95rem;
+}
+
+.booking-table tr:last-child td { border-bottom: none; }
+.booking-table tr:hover { background-color: #f8fafc; }
+
+/* Các thành phần trong bảng */
+.code-display {
+  font-family: monospace; font-weight: 700; color: #3b82f6;
+  background: #eff6ff; padding: 4px 8px; border-radius: 4px; display: inline-block;
+}
+
+.status-badge { font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: 600; }
+.status-badge.completed { background: #f1f5f9; color: #64748b; }
+.status-badge.active { background: #dcfce7; color: #16a34a; }
+
+.client-info { display: flex; align-items: center; gap: 12px; }
+.avatar-circle {
+  width: 40px; height: 40px; background: #e2e8f0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; color: #64748b;
+}
+.client-name { font-weight: 600; color: #0f172a; }
+.client-email { font-size: 0.85rem; color: #64748b; }
+
+.room-id { color: #0f172a; margin-bottom: 4px; }
+.service-note { font-size: 0.85rem; color: #94a3b8; font-style: italic; max-width: 180px; }
+
+.time-row { font-size: 0.9rem; margin-bottom: 4px; }
+.label-in { color: #22c55e; font-weight: 600; font-size: 0.8rem; width: 30px; display: inline-block; }
+.label-out { color: #ef4444; font-weight: 600; font-size: 0.8rem; width: 30px; display: inline-block; }
+
+.total-price { font-weight: 700; color: #0f172a; font-size: 1rem; }
+.payment-status { font-size: 0.8rem; color: #16a34a; display: flex; align-items: center; gap: 4px; margin-top: 4px; }
+
+.btn-delete {
+  width: 36px; height: 36px; border: none; background: #fee2e2; color: #ef4444;
+  border-radius: 8px; cursor: pointer; transition: 0.2s;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.btn-delete:hover { background: #ef4444; color: white; transform: scale(1.1); }
+.text-center { text-align: center; }
+.mt-2 { margin-top: 8px; }
+.empty-state { text-align: center; padding: 50px; color: #94a3b8; }

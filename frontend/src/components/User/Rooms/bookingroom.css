@@ -1,0 +1,279 @@
+:root {
+  --primary: #003580;
+  --success: #008009;
+  --bg-light: #f3f4f6;
+  --text-dark: #1f2937;
+  --text-gray: #6b7280;
+  --border: #e5e7eb;
+  --radius: 12px;
+}
+
+/* Overlay nền tối */
+.booking-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Container chính của modal */
+.booking-modal-container {
+  background: white;
+  width: 100%;
+  max-width: 480px; /* Form gọn gàng giống mobile app */
+  border-radius: var(--radius);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Header */
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  flex-grow: 1;
+  text-align: center;
+}
+
+.btn-icon-close, .btn-icon-back {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-gray);
+  cursor: pointer;
+  padding: 4px;
+  transition: 0.2s;
+}
+
+.btn-icon-close:hover { color: #ef4444; }
+.btn-icon-back:hover { color: var(--primary); }
+
+/* Body - Nội dung cuộn được */
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  background: var(--bg-light);
+  flex-grow: 1;
+}
+
+/* STEP 1 STYLES */
+.room-summary-card {
+  display: flex;
+  gap: 12px;
+  background: white;
+  padding: 12px;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.room-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.price-text {
+  color: var(--primary);
+  font-weight: 700;
+  margin: 4px 0 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-gray);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.form-group input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 53, 128, 0.1);
+}
+
+/* Service Selection Grid */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.service-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  transition: 0.2s;
+}
+
+.service-card:hover { border-color: var(--primary); }
+
+.service-card.selected {
+  border-color: var(--primary);
+  background-color: #f0f9ff;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.srv-icon { color: var(--text-gray); font-size: 1.1rem; }
+.service-card.selected .srv-icon { color: var(--primary); }
+
+.check-mark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--primary);
+  font-size: 0.8rem;
+}
+
+/* STEP 2: INVOICE STYLES */
+.invoice-box {
+  background: white;
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.badge-pending {
+  background: #fff7ed;
+  color: #c2410c;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.invoice-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.invoice-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 15px 0;
+  border-style: dashed;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.item-price { font-weight: 500; }
+
+.invoice-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Footer & Buttons */
+.modal-footer {
+  padding: 16px 20px;
+  background: white;
+  border-top: 1px solid var(--border);
+}
+
+.full-width { width: 100%; }
+
+.btn-primary, .btn-success {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+  color: white;
+}
+
+.btn-primary { background: var(--primary); }
+.btn-primary:hover { background: #00224f; }
+.btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+
+.btn-success { background: var(--success); }
+.btn-success:hover { background: #006407; }
+
+/* Alert Box */
+.alert-box {
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.alert-box.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

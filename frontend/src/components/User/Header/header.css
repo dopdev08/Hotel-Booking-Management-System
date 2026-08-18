@@ -1,0 +1,231 @@
+/* --- 1. KHAI BÁO BẢNG MÀU --- */
+:root {
+  --primary-color: #007bff; 
+  --primary-light: #e7f1ff; 
+  --text-dark: #333333;
+  --text-gray: #666666;
+  --white: #ffffff;
+}
+
+/* --- 2. CẤU TRÚC HEADER --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px; /* Tăng padding 2 bên cho thoáng */
+    height: 80px;
+    background-color: #fff; /* Hoặc màu tối tùy theme của bạn */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* --- LOGO STYLES (MỚI) --- */
+.logo-container {
+    flex-shrink: 0; /* Đảm bảo logo không bị co lại khi màn hình nhỏ */
+}
+
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 50px; /* Điều chỉnh chiều cao logo hợp lý */
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.brand-title {
+    font-family: 'Playfair Display', serif; /* Font sang trọng (nếu có) */
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #0f172a; /* Màu tối */
+    letter-spacing: 1px;
+}
+
+.brand-subtitle {
+    font-size: 0.7rem;
+    color: #d4af37; /* Màu vàng Gold */
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* --- Menu Nav --- */
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #d4af37; /* Active màu vàng */
+}
+
+/* Gạch chân dưới khi active (Optional) */
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #d4af37;
+}
+
+/* --- Auth Section --- */
+.auth-section {
+    display: flex;
+    align-items: center;
+}
+/* --- 4. AUTH SECTION --- */
+.auth-section {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; /* Đảm bảo nút không bị co lại khi màn hình nhỏ */
+}
+
+.login-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 10px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s;
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* --- 5. USER DROPDOWN (Giữ nguyên) --- */
+.user-dropdown-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.user-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  border-radius: 30px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+}
+
+.user-trigger:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-color);
+}
+
+.user-avatar-icon {
+  font-size: 1.8rem; /* Tăng kích thước icon user một chút cho đẹp */
+  color: #ccc;
+}
+
+.user-trigger:hover .user-avatar-icon {
+  color: var(--primary-color);
+}
+
+.user-email {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  width: 240px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.2s ease-out;
+  border: 1px solid #f0f0f0;
+}
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -20px; /* Chiều cao của khoảng hở */
+  left: 0;
+  width: 100%;
+  height: 20px; /* Lấp đầy khoảng hở */
+  background: transparent; /* Trong suốt */
+}
+
+/* Mũi tên chỉ lên của dropdown */
+.dropdown-menu::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background-color: var(--white);
+  transform: rotate(45deg);
+  border-left: 1px solid #f0f0f0;
+  border-top: 1px solid #f0f0f0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 14px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.logout-item { color: #ff4d4f; }
+.logout-item:hover { background-color: #fff1f0; color: #d9363e; }
+.divider { height: 1px; background-color: #eee; margin: 6px 0; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

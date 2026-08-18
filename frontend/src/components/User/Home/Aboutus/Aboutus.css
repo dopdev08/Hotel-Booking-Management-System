@@ -1,0 +1,126 @@
+/* Import font chữ sang trọng (nếu chưa có ở index.html) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap');
+
+.about-luxury-section {
+    padding: 100px 0;
+    background-color: #fdfbf7; /* Màu kem rất nhạt */
+    font-family: 'Lato', sans-serif;
+    overflow: hidden; /* Tránh bị tràn lề */
+}
+
+/* Căn giữa container */
+.about-luxury-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    position: relative;
+    padding: 0 20px;
+}
+
+/* --- PHẦN HÌNH ẢNH --- */
+.about-image-wrapper {
+    width: 60%; /* Ảnh chiếm 60% chiều ngang */
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1; /* Nằm lớp dưới */
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    height: 600px; /* Chiều cao cố định để ảnh đứng dáng */
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 20px 20px 0px rgba(212, 175, 55, 0.2); /* Bóng đổ cứng màu vàng nhạt */
+}
+
+/* --- PHẦN CARD NỘI DUNG (Quan trọng) --- */
+.about-content-card {
+    width: 50%; /* Card chiếm 50% */
+    background-color: #fff;
+    padding: 60px;
+    margin-left: -10%; /* KỸ THUẬT CHỒNG LỚP: Kéo ngược về trái để đè lên ảnh */
+    z-index: 2; /* Nằm lớp trên */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Bóng đổ mềm mại */
+    border-radius: 2px;
+}
+
+/* --- Typography & Chi tiết --- */
+.decorative-line {
+    width: 60px;
+    height: 3px;
+    background-color: #d4af37; /* Màu vàng Gold */
+    margin-bottom: 20px;
+}
+
+.sub-heading {
+    font-size: 0.9rem;
+    color: #888;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.main-heading {
+    font-family: 'Playfair Display', serif; /* Font có chân sang trọng */
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.description {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/* --- Nút bấm --- */
+.btn-luxury {
+    background: transparent;
+    border: 1px solid #2c3e50;
+    color: #2c3e50;
+    padding: 15px 40px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn-luxury:hover {
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+/* --- RESPONSIVE (Cho điện thoại) --- */
+@media (max-width: 992px) {
+    .about-luxury-section .container {
+        flex-direction: column; /* Xếp dọc trên mobile */
+    }
+
+    .about-image-wrapper {
+        width: 100%;
+        margin-bottom: -50px; /* Để ảnh lấn xuống card một chút */
+    }
+    
+    .about-image-wrapper img {
+        height: 400px;
+        box-shadow: none;
+    }
+
+    .about-content-card {
+        width: 90%; /* Card nhỏ lại chút */
+        margin-left: 0; /* Bỏ lấn trái */
+        padding: 40px 20px;
+    }
+    
+    .main-heading {
+        font-size: 2rem;
+    }
+}

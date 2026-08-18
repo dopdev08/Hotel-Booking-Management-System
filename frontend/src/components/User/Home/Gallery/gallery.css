@@ -1,0 +1,100 @@
+/* --- Cấu trúc nền tảng --- */
+#royal-gallery {
+    /* ĐỔI MÀU CHỦ ĐẠO: Nền tối màu Xanh Navy */
+    background-color: #2e4d96; 
+    padding: 80px 20px;
+    font-family: 'Times New Roman', serif; /* Font chữ cổ điển */
+}
+
+/* --- Tiêu đề --- */
+.gallery-title {
+    text-align: center;
+    color: #d4af37; /* Màu Vàng Gold */
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.gallery-title h2 {
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.ornament {
+    font-size: 3rem;
+}
+
+/* --- Lưới hiển thị --- */
+.royal-grid {
+    display: grid;
+    /* Grid tự động, tối thiểu 320px một hình */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- KHUNG TRANH (Phần quan trọng nhất) --- */
+.frame-container {
+    transition: transform 0.3s ease;
+}
+
+.frame-container:hover {
+    transform: scale(1.02); /* Phóng to nhẹ cả khung khi hover */
+    z-index: 10;
+}
+
+/* Viền ngoài màu Gold */
+.outer-frame {
+    background: #d4af37; /* Màu khung vàng */
+    padding: 10px; /* Độ dày viền vàng */
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.5); /* Bóng đổ đậm */
+    position: relative;
+    border-radius: 4px;
+}
+
+/* Viền trong màu trắng (giả lập giấy bo ảnh) */
+.inner-mat {
+    background: #fff;
+    padding: 15px; /* Khoảng trắng giữa ảnh và khung vàng */
+    border: 1px solid #ccc;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+.inner-mat img {
+    width: 100%;
+    height: 250px; /* Chiều cao cố định để khung đều nhau */
+    object-fit: cover;
+    display: block;
+    border: 1px solid #000; /* Viền chỉ đen sát ảnh */
+}
+
+/* --- Nhãn tên dán trên khung --- */
+.frame-label {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0f172a; /* Nền xanh trùng background */
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 5px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .royal-grid {
+        grid-template-columns: 1fr; /* 1 cột trên điện thoại */
+        padding: 0 10px;
+    }
+}

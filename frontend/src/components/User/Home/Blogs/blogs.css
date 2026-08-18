@@ -1,0 +1,188 @@
+.journal-section {
+    padding: 80px 20px;
+    /* 1. Đặt vị trí tương đối để làm mỏ neo cho lớp phủ */
+    position: relative; 
+    font-family: 'Segoe UI', sans-serif;
+    /* 2. Ảnh nền dự phòng nếu ảnh chính không load được */
+    background-color: #2c3e50; 
+    /* 3. Đặt ảnh nền (Sửa lại đường dẫn cho đúng file của bạn) */
+    background-image: url('../../../../assets/khachsan.jpg'); /* Ví dụ dùng lại ảnh khachsan.jpg */
+    background-size: cover; /* Ảnh phủ kín khung */
+    background-position: center center; /* Căn giữa ảnh */
+    background-repeat: no-repeat;
+    /* Tùy chọn: Hiệu ứng Parallax (ảnh đứng yên khi cuộn chuột) - Bỏ comment dòng dưới nếu thích */
+    /* background-attachment: fixed; */
+    
+    /* Đảm bảo nội dung nằm trên lớp phủ */
+    z-index: 1;
+}
+
+/* --- TẠO LỚP PHỦ MỜ (QUAN TRỌNG) --- */
+.journal-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Màu phủ: Đen mờ 70% - Điều chỉnh số 0.7 để tăng giảm độ tối */
+    background-color: rgba(0, 0, 0, 0.7); 
+    /* Đặt lớp phủ nằm sau nội dung nhưng nằm trước ảnh nền */
+    z-index: -1;
+}
+
+/* --- Header (ĐÃ CHỈNH SỬA MÀU SẮC ĐỂ DỄ ĐỌC TRÊN NỀN TỐI) --- */
+.journal-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.journal-header .sub-heading {
+    color: #d4af37; /* Vẫn giữ màu vàng gold */
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.journal-header h2 {
+    font-size: 2.5rem;
+    /* ĐỔI MÀU CHỮ SANG TRẮNG */
+    color: #ffffff; 
+    margin: 0;
+    font-family: 'Times New Roman', serif;
+    /* Thêm chút bóng đổ cho chữ dễ đọc hơn */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.header-line {
+    width: 50px;
+    height: 3px;
+    background-color: #d4af37;
+    margin: 20px auto 0;
+}
+
+/* --- Grid Container --- */
+.journal-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Card Style --- */
+.journal-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden; /* Để bo góc ảnh */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.journal-card:hover {
+    transform: translateY(-10px); /* Nổi lên khi hover */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* --- Image Area --- */
+.journal-image-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.journal-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.journal-card:hover .journal-image-wrapper img {
+    transform: scale(1.1); /* Zoom ảnh khi hover */
+}
+
+/* Date Badge */
+.date-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #fff;
+    color: #0f172a;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* --- Content Area --- */
+.journal-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Để các card cao bằng nhau */
+}
+
+.journal-category {
+    color: #888;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.journal-title {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    font-family: 'Times New Roman', serif;
+    transition: color 0.3s ease;
+}
+
+.journal-card:hover .journal-title {
+    color: #d4af37; /* Đổi màu tiêu đề khi hover card */
+}
+
+.journal-desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Cắt bớt dòng nếu quá dài */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- Button --- */
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #0f172a;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto; /* Đẩy nút xuống đáy */
+    transition: gap 0.3s ease;
+}
+
+.read-more-btn:hover {
+    gap: 15px; /* Hiệu ứng đẩy mũi tên ra xa */
+    color: #d4af37;
+}
+
+.arrow-icon {
+    font-size: 0.8rem;
+}

@@ -1,0 +1,194 @@
+/* Layout tổng thể: Sidebar bên trái, Nội dung bên phải */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f1f5f9; /* Màu nền xám xanh nhạt dịu mắt */
+}
+
+/* Phần nội dung chính */
+.dashboard-content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 260px; /* Phải khớp với width của Sidebar ở bài trước */
+  overflow-y: auto;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #1e293b;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.date-display {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: #64748b;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  font-size: 0.9rem;
+}
+
+/* Grid hiển thị Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Tự động chia cột */
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+/* Style cho từng Card */
+.stat-card {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+}
+
+/* Icon Wrapper: Hình tròn nền màu */
+.stat-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+/* Màu sắc riêng cho từng loại icon */
+.stat-icon-wrapper.revenue { background: #dcfce7; color: #16a34a; } /* Xanh lá */
+.stat-icon-wrapper.bookings { background: #dbeafe; color: #2563eb; } /* Xanh dương */
+.stat-icon-wrapper.rooms { background: #f3e8ff; color: #9333ea; } /* Tím */
+.stat-icon-wrapper.customers { background: #ffedd5; color: #ea580c; } /* Cam */
+
+.stat-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.stat-trend {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+}
+.stat-trend.up { color: #16a34a; }
+.stat-sub { font-size: 0.8rem; color: #94a3b8; margin-top: 5px; }
+
+/* Phần bảng Hoạt động gần đây */
+.recent-section {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h3 {
+  margin: 0;
+  color: #334155;
+  display: flex;
+  align-items: center;
+}
+
+.dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dashboard-table th {
+  text-align: left;
+  padding: 12px;
+  color: #64748b;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.dashboard-table td {
+  padding: 16px 12px;
+  color: #334155;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Trạng thái trong bảng */
+.status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.status.success { background: #dcfce7; color: #15803d; }
+.status.pending { background: #fef9c3; color: #a16207; }
+.status.cancel { background: #fee2e2; color: #b91c1c; }
+
+/* Tiện ích Loading / Error */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 260px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.alert-error {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #fca5a5;
+}

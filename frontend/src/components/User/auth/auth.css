@@ -1,0 +1,220 @@
+/* NỀN CHUNG CHO TRANG AUTH */
+.auth-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 72px 16px 32px;
+
+  background: #f5f5f5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* CARD ĐĂNG NHẬP / ĐĂNG KÝ – LUÔN LUÔN 1 CỘT */
+.auth-wrapper .auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 20px 20px;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.12);
+  border: 1px solid #f1f1f1;
+
+  /* QUAN TRỌNG: ép 1 cột, đè hết grid/flex cũ */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch;
+}
+
+/* đảm bảo mọi phần tử con đều chiếm full chiều ngang */
+.auth-card > * {
+  width: 100%;
+}
+
+/* TIÊU ĐỀ + MÔ TẢ */
+.auth-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color, #111827);
+  margin-bottom: 4px;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.auth-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.auth-input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease,
+    transform 0.1s ease;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: var(--primary, #e60000);
+  box-shadow: 0 0 0 1px rgba(230, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* THÔNG BÁO LỖI */
+.auth-alert {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.auth-alert--error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* BUTTON CHÍNH */
+.auth-btn {
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.1s ease, box-shadow 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.auth-btn--primary {
+  background-color: var(--primary, #e60000);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(230, 0, 0, 0.35);
+}
+
+.auth-btn--primary:hover {
+  background-color: #cc0000;
+  transform: translateY(-1px);
+}
+
+.auth-btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(230, 0, 0, 0.3);
+}
+
+/* DÒNG LINK CHUYỂN QUA LẠI LOGIN/REGISTER */
+.auth-switch {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  color: #6b7280;
+}
+
+
+
+.auth-link {
+  color: var(--primary, #e60000);
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* LINK VỀ TRANG CHỦ */
+.auth-back-home {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.auth-back-home a {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.auth-back-home a:hover {
+  color: var(--primary, #e60000);
+}
+
+/* RESPONSIVE NHẸ */
+@media (min-width: 768px) {
+  .auth-wrapper {
+    padding: 96px 24px 40px;
+  }
+
+  .auth-card {
+    border-radius: 18px;
+  }
+
+  .auth-title {
+    font-size: 26px;
+  }
+}
+
+/* HÀNG PHỤ – QUÊN MẬT KHẨU */
+.auth-extra-row {
+  margin-top: 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.auth-link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  color: var(--primary, #e60000);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.auth-link-button:hover {
+  text-decoration: underline;
+}
+
+/* viền đỏ khi có lỗi */
+.auth-input--error {
+  border-color: #f87171;
+  box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.4);
+}
+
+/* text lỗi dưới mỗi field */
+.auth-error-text {
+  font-size: 12px;
+  color: #b91c1c;
+  margin-top: 2px;
+}
