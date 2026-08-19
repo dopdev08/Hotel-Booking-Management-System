@@ -1,11 +1,11 @@
 server:
-  port: 9192
+  port: ${SERVER_PORT:9192}
 
 spring:
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://host.docker.internal:3306/hotel
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -25,14 +25,13 @@ spring:
 
 security:
   jwt:
-    secret-key: 36763979244226452948404D635166546A576D5A7134743777217A25432A462D
-    expire-length: 3600000
+    secret-key: ${JWT_SECRET}
+    expire-length: ${JWT_EXPIRE_LENGTH:3600000}
 
-# Default admin account (can be overridden by env vars or other profiles)
 app:
   admin:
-    email: admin@gmail.com
-    password: admin123
+    email: ${ADMIN_EMAIL}
+    password: ${ADMIN_PASSWORD}
 
 logging:
   level:
