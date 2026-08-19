@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import Head from "../Head/Homebar.jsx";
+import { getAllBookings, deleteBooking } from "../../../api";
 import { getAuth, checkIsAdmin } from "../../../utils/auth.js";
 import { FaSearch, FaTrash, FaCalendarAlt, FaFileInvoiceDollar, FaUser, FaSync, FaClock } from "react-icons/fa";
 import "../Trangchu.css";
@@ -18,9 +19,7 @@ export default function BookingManager() {
   const loadBookings = useCallback(async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:9192/bookings/all-bookings", {
-        headers: { "Authorization": auth?.token ? `Bearer ${auth.token}` : "" }
-      });
+      const res = await getAllBookings();
 
       if (!res.ok) throw new Error("Lỗi tải dữ liệu");
 
@@ -60,13 +59,7 @@ export default function BookingManager() {
     if (!window.confirm(`Hủy đơn đặt phòng: ${code}?`)) return;
 
     try {
-      const res = await fetch(`http://localhost:9192/bookings/booking/${bookingId}/delete`, {
-        method: "DELETE",
-        headers: {
-          "Authorization": `Bearer ${auth.token}`, 
-          "Content-Type": "application/json"
-        },
-      });
+      const res = await deleteBooking(bookingId);
 
       if (res.ok) {
         alert("✅ Đã hủy thành công!");

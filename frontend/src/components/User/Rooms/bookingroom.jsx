@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import "./bookingroom.css";
+import { estimateBooking, createBooking } from "../../../api";
 import { checkIsAdmin } from "../../../utils/auth";
 import { FaCalendarAlt, FaUserFriends, FaPlane, FaBed, FaUtensils, FaStar, FaArrowLeft, FaCheckCircle, FaTimes } from "react-icons/fa";
 
@@ -51,17 +52,12 @@ export default function BookingForm({ room, auth, onClose, onBookingSuccess }) {
     
     setLoading(true);
     try {
-      const ESTIMATE_URL = `http://localhost:9192/bookings/room/${room.id}/estimate`;
-      const res = await fetch(ESTIMATE_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${auth.token}` },
-        body: JSON.stringify({
-          guestEmail: userEmail,
-          checkInDate,
-          checkOutDate,
-          totalNumberOfGuest: totalGuests,
-          selectedServices,
-        }),
+      const res = await estimateBooking(room.id, {
+        guestEmail: userEmail,
+        checkInDate,
+        checkOutDate,
+        totalNumberOfGuest: totalGuests,
+        selectedServices,
       });
 
       const data = await res.json();
@@ -79,16 +75,11 @@ export default function BookingForm({ room, auth, onClose, onBookingSuccess }) {
   const handleBooking = async () => {
     setLoading(true);
     try {
-      const BOOK_URL = `http://localhost:9192/bookings/room/${room.id}/booking`;
-      const res = await fetch(BOOK_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${auth.token}` },
-        body: JSON.stringify({
-          checkInDate,
-          checkOutDate,
-          totalNumberOfGuest: totalGuests,
-          selectedServices,
-        }),
+      const res = await createBooking(room.id, {
+        checkInDate,
+        checkOutDate,
+        totalNumberOfGuest: totalGuests,
+        selectedServices,
       });
 
       const data = await res.json();

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaCalendarAlt, FaBed, FaSearch, FaRedo, FaWifi, FaTv, FaCoffee } from "react-icons/fa"; // Import Icon
+import { searchRooms } from "../../../api";
 import Header from "../Header/header.jsx";
 import Footer from "../footer/footer.jsx";
 import BookingForm from "./bookingroom.jsx";
@@ -39,10 +40,7 @@ export default function Rooms({ rooms, auth, onLogout }) {
       return;
     }
     try {
-      const params = new URLSearchParams({ checkIn, checkOut });
-      if (roomType) params.append("roomType", roomType);
-      
-      const res = await fetch(`http://localhost:9192/rooms/search?${params.toString()}`);
+      const res = await searchRooms({ checkIn, checkOut, roomType });
       if (!res.ok) throw new Error("Lỗi tìm kiếm");
       
       const data = await res.json();

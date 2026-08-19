@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "../Head/Homebar.jsx";
+import { getAllRooms, addNewRoom, updateRoom, deleteRoom } from "../../../api";
 import { FaPlus, FaSearch, FaEdit, FaTrash, FaTimes, FaCamera } from "react-icons/fa";
 
 import "./Quanlyphong.css";
@@ -23,7 +24,7 @@ export default function QuanLyPhong() {
   // ================= LOAD ROOMS =================
   const loadRooms = async () => {
     try {
-      const res = await fetch("http://localhost:9192/rooms/all-rooms");
+      const res = await getAllRooms();
       if (!res.ok) throw new Error("Lỗi kết nối server");
       const data = await res.json();
       setRooms(data);
@@ -90,14 +91,11 @@ export default function QuanLyPhong() {
       formData.append("photo", currentRoom.photo);
     }
 
-    const url = isEditMode 
-      ? `http://localhost:9192/rooms/update/${currentRoom.id}`
-      : "http://localhost:9192/rooms/add/new-room";
-    
-    const method = isEditMode ? "PUT" : "POST";
-
     try {
-      const res = await fetch(url, { method, body: formData });
+      const res = isEditMode
+        ? await updateRoom(currentRoom.id, formData)
+        : await addNewRoom(formData);
+
       if (!res.ok) throw new Error("Thao tác thất bại");
       
       alert(isEditMode ? "✅ Đã cập nhật!" : "✅ Đã thêm mới!");
@@ -111,7 +109,7 @@ export default function QuanLyPhong() {
   const handleDelete = async (id) => {
     if (!window.confirm("Bạn chắc chắn muốn xóa phòng này chứ?")) return;
     try {
-      const res = await fetch(`http://localhost:9192/rooms/delete/room/${id}`, { method: "DELETE" });
+      const res = await deleteRoom(id);
       if (!res.ok) throw new Error("Xóa thất bại");
       loadRooms();
     } catch (error) {

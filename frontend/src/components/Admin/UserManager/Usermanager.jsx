@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getAllUsers, updateUser, deleteUser } from "../../../api";
 import Homebar from "../Head/Homebar.jsx";
 import { getAuth } from "../../../utils/auth";
 import {
@@ -29,9 +30,7 @@ export default function Customers() {
     if (!token) return navigate("/login");
 
     try {
-      const res = await fetch("http://localhost:9192/users/all", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await getAllUsers();
 
       if (!res.ok) return navigate("/login");
 
@@ -80,15 +79,8 @@ export default function Customers() {
   const handleDelete = async (email) => {
     if (!window.confirm(`Xóa tài khoản ${email}?`)) return;
 
-    const token = getAuth()?.token;
     try {
-      const res = await fetch(
-        `http://localhost:9192/users/delete/${email}`,
-        {
-          method: "DELETE",
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      const res = await deleteUser(email);
 
       if (res.ok) loadUsers();
       else alert("❌ Xóa thất bại");
@@ -100,20 +92,9 @@ export default function Customers() {
   /* ================= UPDATE ================= */
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const token = getAuth()?.token;
 
     try {
-      const res = await fetch(
-        `http://localhost:9192/users/update/${editingUser.email}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(editingUser),
-        }
-      );
+      const res = await updateUser(editingUser.email, editingUser);
 
       if (res.ok) {
         setEditingUser(null);

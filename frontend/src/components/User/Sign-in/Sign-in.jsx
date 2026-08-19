@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { register } from "../../../api";
 import "../auth/auth.css";
 
 // Validation từng field
@@ -92,11 +93,7 @@ function Register() {
     if (Object.keys(newErrors).length > 0) return;
 
     try {
-      const res = await fetch("http://localhost:9192/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      const res = await register(form);
 
       if (!res.ok) {
         // Đọc body trả về an toàn (có thể là JSON hoặc plain text) để debug

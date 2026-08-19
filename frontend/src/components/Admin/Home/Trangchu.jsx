@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "../Head/Homebar.jsx";
+import { getGlobalStats } from "../../../api";
 import { getAuth, checkIsAdmin } from "../../../utils/auth";
 import { FaMoneyBillWave, FaCalendarCheck, FaBed, FaUserFriends, FaArrowUp, FaClock } from "react-icons/fa";
 import "../Trangchu.css"; 
@@ -27,12 +28,7 @@ export default function Trangchu() {
 
     const fetchAdminDashboardData = async () => {
       try {
-        const response = await fetch("http://localhost:9192/bookings/admin/global-stats", {
-          headers: {
-            "Authorization": `Bearer ${auth.token}`,
-            "Content-Type": "application/json"
-          }
-        });
+        const response = await getGlobalStats();
 
         const text = await response.text();
         let data = null;
