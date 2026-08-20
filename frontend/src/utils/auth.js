@@ -87,7 +87,12 @@ export function logout() {
   localStorage.removeItem(AUTH_KEY);
 }
 
+export function isAuthenticated() {
+  const auth = getAuth();
+  return Boolean(auth && auth.token);
+}
+
 export function checkIsAdmin(authObj) {
   if (!authObj || !authObj.roles) return false;
   return authObj.roles.some(r => ["ADMIN", "ROLE_ADMIN"].includes(r));
-}
+}

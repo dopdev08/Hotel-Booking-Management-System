@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { login } from "../../../api";
 // Đổi isAdmin thành checkIsAdmin
 import { setAuth as saveAuth, checkIsAdmin } from '../../../utils/auth'; 
 import "../auth/auth.css";
@@ -21,11 +22,7 @@ function Login({ setAuth }) {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:9192/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+      const res = await login({ email, password });
 
       const data = await res.json();
 

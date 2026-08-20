@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+import { getAllRooms } from "./api";
+
 // UTILS: Đảm bảo file auth.js đã sửa lỗi export AUTH_KEY
 import { getAuth, logout as doLogout } from "./utils/auth";
 
@@ -69,7 +71,7 @@ function App() {
 
   const loadRooms = async () => {
     try {
-      const res = await fetch("http://localhost:9192/rooms/all-rooms");
+      const res = await getAllRooms();
       if (!res.ok) throw new Error("Network response was not ok");
       const data = await res.json();
       setRooms(data);

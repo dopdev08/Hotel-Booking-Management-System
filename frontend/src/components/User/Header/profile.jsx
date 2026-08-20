@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getUserBookings } from "../../../api";
 import "./profile.css";
 import Header from "../Header/header"; 
 import Footer from "../footer/footer"; 
@@ -21,13 +22,7 @@ export default function Profile({ auth, onLogout }) {
   const fetchBookings = async () => {
     try {
       setLoading(true);
-      // Giả sử API của bạn hoạt động đúng, nếu không tôi sẽ dùng dữ liệu mẫu để demo giao diện
-      const response = await fetch(`http://localhost:9192/bookings/user/${userEmail}/bookings`, {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
-        }
-      });
+      const response = await getUserBookings(userEmail);
 
       if (!response.ok) {
         throw new Error("Không thể tải lịch sử đặt phòng");
