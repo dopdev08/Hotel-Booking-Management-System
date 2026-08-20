@@ -2,19 +2,12 @@ server:
   port: ${SERVER_PORT:9192}
 
 spring:
-  datasource:
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    url: ${DB_URL}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
   jpa:
     show-sql: true
-    hibernate:
-      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
+    open-in-view: false
 
   servlet:
     multipart:
