@@ -34,7 +34,7 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
 # Spring Boot port
-EXPOSE 9192
+EXPOSE 10000
 
 # Start application
 ENTRYPOINT ["java", "-jar", "app.jar"]
