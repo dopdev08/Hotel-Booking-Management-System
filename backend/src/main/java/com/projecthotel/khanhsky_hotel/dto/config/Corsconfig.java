@@ -13,16 +13,32 @@ public class Corsconfig {
 
     @Bean
     public CorsConfigurationSource mycorsConfigurationSource() {
+
         CorsConfiguration configuration = new CorsConfiguration();
 
-        // Dùng setAllowedOriginPatterns thay vì setAllowedOrigins
-        configuration.setAllowedOriginPatterns(List.of("http://localhost:5173")); // frontend
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        configuration.setAllowedOriginPatterns(List.of(
+                "http://localhost:5173",
+                "https://hotel-booking-management-system-ajptdo9qz.vercel.app/"));
+
+        configuration.setAllowedMethods(List.of(
+                "GET",
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE",
+                "OPTIONS"));
+
         configuration.setAllowedHeaders(List.of("*"));
+
+        configuration.setExposedHeaders(List.of(
+                "Authorization"));
+
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+
         source.registerCorsConfiguration("/**", configuration);
+
         return source;
     }
 }
