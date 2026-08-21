@@ -18,7 +18,7 @@ public class Corsconfig {
 
         configuration.setAllowedOriginPatterns(List.of(
                 "http://localhost:5173",
-                "https://hotel-booking-management-system-ajptdo9qz.vercel.app/"));
+                "https://hotel-booking-management-system-pi.vercel.app"));
 
         configuration.setAllowedMethods(List.of(
                 "GET",
