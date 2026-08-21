@@ -37,4 +37,4 @@ COPY --from=build /app/target/*.jar app.jar
 EXPOSE 10000
 
 # Start application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Xms128m", "-Xmx350m", "-jar", "app.jar"]
